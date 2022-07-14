@@ -1,0 +1,78 @@
+﻿@page
+@model FrontEndNexoz.Pages.Libros.CrearLibroModel
+@{
+    List<SelectListItem> items = (List<SelectListItem>)ViewBag.items;
+}
+
+<br />
+<h2>Crear Libros</h2>
+@if (Model.errorMessage.Length > 0)
+{
+    <div class='alert alert-warning alert-dismissible fade show' role='alert'>
+        <strong>@Model.errorMessage</strong>
+        <button type="button" class="btn-close" data-bs-dismiss='alert' arial-label='close'></button>
+    </div>
+}
+
+<form method="POST">
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">Titulo de libro</label>
+        <div class="col-sm-6">
+            <input type="text" class="form-control" name="titulo" value="@Model.Objlibros.Titulo" />
+        </div>
+    </div>
+     <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">Año publicacion</label>
+        <div class="col-sm-6">
+            <input type="text" class="form-control" name="año" value="@Model.Objlibros.Año" />
+        </div>
+    </div>
+     <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">Genero de libro</label>
+        <div class="col-sm-6">
+             <select name="gen" id="gen" class="form-control">
+                   @foreach(var item in Model.Objgenero)
+                    {
+                        <option name="gen" id="gen"   value="@item.IdGenero">@item.Descipcion</option>
+                    }
+               </select>
+        </div>
+    </div>
+     <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">Numero de paginas</label>
+        <div class="col-sm-6">
+            <input type="text" class="form-control" name="numpaginas" value="@Model.Objlibros.NumPaginas" />
+        </div>
+    </div>
+     <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">Autor</label>
+        <div class="col-sm-6">
+            
+               <select name="aut" id="aut" class="form-control">
+                   @foreach(var item in Model.ObjAutor)
+                    {
+                        <option name="aut" id="aut"  value="@item.IdAutor">@item.Nombre</option>
+                    }
+               </select>
+
+            
+        </div>
+    </div>
+    
+
+    @if (Model.succesMessage.Length > 0)
+{
+    <div class='alert alert-succes alert-dismissible fade show' role='alert'>
+        <strong>@Model.succesMessage</strong>
+        <button type="button" class="btn-close" data-bs-dismiss='alert' arial-label='close'></button>
+    </div>
+}
+     <div class="row mb-3">
+        <div class="offset-sm-3 col-sm-3 d-grid">
+            <button type="submit" class="btn btn-primary"> submit <button>
+        </div>
+        <div class="col-sm-3 d-grid">
+            <a class="btn btn-outline-primary" href="/Autor/Index" role="button">Cancel</a>
+        </div>
+    </div>
+</form>

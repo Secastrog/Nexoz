@@ -1,0 +1,94 @@
+﻿@page
+@model FrontEndNexoz.Pages.Libros.IndexModel
+@{
+     
+}
+
+<br />
+<h2>Libros</h2>
+<a class='btn btn-primary btn-sm' href='Libros/CrearLibro'>Registrar Libro</a>
+<br />
+<br />
+<form method="POST">
+    <h2>Filtros deseados. (autor, año, titulo )</h2>
+    <select name="gen" id="gen" class="form-control">
+        <option name="gen" id="gen" value="1">Autor</option>
+        <option name="gen" id="gen" value="2">Titulo</option>
+        <option name="gen" id="gen" value="3">Año</option>
+    </select>
+    <br />
+    <div >
+        <button type="submit" class="btn btn-primary"> Crear filtro </button>
+    </div>
+</form>
+<br />
+<form method="POST">
+
+@if (Model.filterAutor)
+{
+    <div class="col-sm-6">            
+        <select name="aut" id="aut" class="form-control">
+            @foreach(var item in Model.ObjAutor)    
+            {
+                <option name="aut" id="aut"  value="@item.IdAutor">@item.Nombre</option>
+            }
+        </select>
+    </div>    
+}
+@if (Model.FilterTitulo)
+{
+    <div class="col-sm-6">
+        <select name="titulo" id="titulo" class="form-control">
+            @foreach(var item in Model.ObjLibro)
+            {
+                <option name="titulo" id="titulo"  value="@item.Titulo">@item.Titulo</option>
+            }
+        </select>   
+    </div>
+    
+}
+@if (Model.FilterAño)
+{
+    <div class="col-sm-6">
+        <select name="año" id="año" class="form-control">
+            @foreach(var item in Model.ObjLibro)
+            {
+                <option name="año" id="año"  value="@item.Año">@item.Año</option>
+            }
+        </select>
+    </div>    
+}
+<br />
+
+@if (Model.FilterAño || Model.FilterTitulo || Model.filterAutor)
+    {
+        <div >
+            <button type="submit" class="btn btn-primary" asp-page-handler="JoinList"  > filtrar</button>
+        </div>
+    }
+</form>
+
+
+    
+<table class="table">
+    <thead>
+        <th>Id Libro</th>
+        <th>Titulo</th>
+        <th>Año publicacion</th>
+        <th>Id Genero</th>
+        <th>Numero de paginas</th>
+        <th>Id Autor</th>
+    </thead>
+    <tbody>@foreach(var item in Model.ObjLibro)
+        {
+         <tr>
+            <td>@item.IdLibros</td>
+            <td>@item.Titulo</td>
+            <td>@item.Año</td>
+            <td>@item.IdGenero</td>
+            <td>@item.NumPaginas</td>
+            <td>@item.IdAutor</td>
+        </tr>   
+        }        
+    </tbody>
+</table>

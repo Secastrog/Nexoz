@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "pm9FdRpIbsw6CRNcwjpnT5gopQsyagvukuUDomfSdLw=",
+  "Source": "BackendNexos",
+  "BasePath": "_content/BackendNexos",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

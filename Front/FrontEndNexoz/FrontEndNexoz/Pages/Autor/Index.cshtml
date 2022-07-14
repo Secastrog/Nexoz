@@ -1,0 +1,30 @@
+﻿@page
+@model FrontEndNexoz.Pages.Autor.IndexModel
+@{
+}
+
+
+<br />
+<h2>Autores</h2>
+<a class='btn btn-primary btn-sm' href='Autor/CreateAutor'>Registrar Autor</a>
+<table class="table">
+    <thead>
+        <th>Id Autor</th>
+        <th>Autor</th>
+        <th>Fecha Nacimiento</th>
+        <th>Ciudad de Procedencia</th>
+        <th>Correo</th>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.ObjAutor)
+        {
+             <tr>
+                 <td>@item.IdAutor</td>
+                <td>@item.Nombre</td>
+                <td>@item.FechaNacimiento</td>
+                <td>@item.CiudadProcedencia</td>
+                <td>@item.Correo</td>
+            </tr>
+        }       
+    </tbody>
+</table>
